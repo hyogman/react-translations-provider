@@ -1,9 +1,10 @@
 # React Translations Provider
-A React render prop component for setting translations 
+
+A React render prop component for setting translations
 
 `yarn add react-translations-provider`
 
-## Example 
+## Example
 
 ```js
 import React from "react";
@@ -37,34 +38,25 @@ const translations = {
 function App() {
   return (
     <Translations>
-      {({ setLanguage, language, setLocale }) => {
-        moment.locale(language);
-        return (
-          <div>
-            <div>
-              <select
-                value={language}
-                onChange={e => {
-                  setLanguage(e.target.value);
-                }}
-              >
-                <option value="en">English</option>
-                <option value="de">German</option>
-                <option value="es">Spanish</option>
-              </select>
-              <h1>{translations[language].hello}</h1>
-              <h2>{translations[language].working}</h2>
-              <h3>{moment().format("L")}</h3>
-            </div>
-          </div>
-        );
-      }}
+      {({ setLanguage, language }) => (
+        <div>
+          <select value={language} onChange={e => setLanguage(e.target.value)}>
+            <option value="en">English</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+          </select>
+          <h1>{translations[language].hello}</h1>
+          <h2>{translations[language].working}</h2>
+          <h3>
+            {moment()
+              .locale(language)
+              .format("L")}
+          </h3>
+        </div>
+      )}
     </Translations>
   );
 }
 
 export default App;
-
-
-
 ```
