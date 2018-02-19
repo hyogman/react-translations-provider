@@ -29,7 +29,7 @@ const translations = {
 function App() {
   return (
     <Translations>
-      {({ setLanguage, language, setLocale }) => {
+      {({ setLanguage, language }) => {
         moment.locale(language);
         return (
           <div>
