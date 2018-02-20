@@ -1,5 +1,5 @@
 import React from "react";
-import TranslationProvider, { Translate } from "../lib";
+import TranslationProvider, { Translate, Text } from "../lib";
 import moment from "moment";
 
 require("moment/locale/de");
@@ -9,18 +9,33 @@ const en = {
   locale: "en",
   hello: "Hello World!",
   working: "Is this working?",
+  weather: {
+    weather: "Weather",
+    sunny: "sunny",
+    cloudy: "cloudy",
+  },
 };
 
 const de = {
   locale: "de",
   hello: "Hallo Welt!",
   working: "Funktioniert das?",
+  weather: {
+    weather: "Wetter",
+    sunny: "sonnig",
+    cloudy: "bewölkt",
+  },
 };
 
 const es = {
   locale: "de",
   hello: "¡Hola Mundo!",
   working: "¿Esto funciona?",
+  weather: {
+    weather: "Clima",
+    sunny: "soleado",
+    cloudy: "nublado",
+  },
 };
 
 const translations = {
@@ -41,6 +56,7 @@ function App() {
             <option value="es">Spanish</option>
           </select>
           <DisplayStuff />
+          <SimpleWeather />
         </div>
       )}
     </TranslationProvider>
@@ -63,6 +79,21 @@ function DisplayStuff() {
         </div>
       )}
     </Translate>
+  );
+}
+
+function SimpleWeather() {
+  // Or use the Text component api and pass the key path in translateKey prop to return
+  // translation from translations object
+  return (
+    <div>
+      <h1>
+        <Text translateKey="weather.weather" />
+      </h1>
+      <h3>
+        <Text translateKey="weather.sunny" />
+      </h3>
+    </div>
   );
 }
 

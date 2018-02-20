@@ -1,5 +1,6 @@
 import * as React from "react";
 import createReactContext from "create-react-context";
+import get from "lodash.get";
 
 const TranslationContext = createReactContext("");
 
@@ -54,5 +55,25 @@ export function Translate({ children }) {
     <TranslationContext.Consumer>
       {translations => children({ translations })}
     </TranslationContext.Consumer>
+  );
+}
+
+export function Text({ translateKey }) {
+  return (
+    <React.Fragment>
+      <TranslationContext.Consumer>
+        {translations => {
+          const translateText = get(translations, translateKey, null);
+          if (!translateText) {
+            console.error(
+              `tranlateKey path, ${translateKey} does not exist in translations object`,
+            );
+            return null;
+          }
+
+          return translateText;
+        }}
+      </TranslationContext.Consumer>
+    </React.Fragment>
   );
 }
