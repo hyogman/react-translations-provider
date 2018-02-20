@@ -28,7 +28,7 @@ const de = {
 };
 
 const es = {
-  locale: "de",
+  locale: "es",
   hello: "¡Hola Mundo!",
   working: "¿Esto funciona?",
   weather: {
