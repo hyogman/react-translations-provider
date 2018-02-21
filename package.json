@@ -1,6 +1,6 @@
 {
   "name": "react-translations-provider",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React render component for setting translations",
   "main": "build/index.js",
   "scripts": {
